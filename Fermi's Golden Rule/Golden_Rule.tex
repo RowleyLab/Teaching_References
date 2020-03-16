@@ -1,0 +1,167 @@
+\documentclass[12pt, openany, letterpaper]{memoir}
+\usepackage{MyStyle}
+\begin{document}
+	\begin{center}
+		{\Large Fermi's Golden Rule Problem Set}
+		
+		Dr. Matthew Rowley
+		
+		\today
+	\end{center}
+
+\section*{Problem 1.2}
+Solving this problem is essentially an exercise in brute-force algebra. It follows a familiar pattern of expanding the wavefunction in terms of its coefficients and eigenfunctions, operating on that expansion, and seeing what cancels out.
+
+First, we have the Schr\"odinger equation, combining the time-dependent and time-independent versions:
+
+$$
+	i\hbar\frac{\partial}{\partial t}\ket{\phi} = \widehat{H}\ket{\phi}
+$$
+
+We can now expand both $\ket{\phi}$ and $\widehat{H}$. Because there is not much we can do with the time-independent part, and to save space for now, we will only expand $\ket{\phi}$ on the left side
+
+$$
+i\hbar\frac{\partial}{\partial t}\sum c_n(t)\ket{\psi_n}e^{\nicefrac{-iE_nt}{\hbar}} = \widehat{H}_0\ket{\phi} + \widehat{W}\ket{\phi}
+$$
+
+Now, we recognize that both the coefficients and the phase term are time-dependent (but $\ket{\psi_n}$ is not), so the partial derivative will require the chain rule to solve. Forging ahead:
+
+$$
+i\hbar\sum \frac{-iE_n}{\hbar}c_n(t)\ket{\psi_n}e^{\nicefrac{-iE_nt}{\hbar}} + i\hbar\sum c^\prime_n(t)\ket{\psi_n}e^{\nicefrac{-iE_nt}{\hbar}} = \widehat{H}_0\ket{\phi} + \widehat{W}\ket{\phi}
+$$
+
+Now the first term on the left can simplify when the constants are brought out of the sum:
+
+$$
+i\hbar\sum \frac{-iE_n}{\hbar}c_n(t)\ket{\psi_n}e^{\nicefrac{-iE_nt}{\hbar}} = \sum E_nc_n(t)\ket{\psi_n}e^{\nicefrac{-iE_nt}{\hbar}} = \widehat{H}_0\ket{\phi}
+$$
+
+The $\widehat{H}_0\ket{\phi}$ can now be subtracted from both sides, and $\ket{\phi}$ can be expanded on the right, leaving:
+
+$$
+i\hbar\sum c^\prime_n(t)\ket{\psi_n}e^{\nicefrac{-iE_nt}{\hbar}} =  \widehat{W}\sum c_n(t)\ket{\psi_n}e^{\nicefrac{-iE_nt}{\hbar}}
+$$
+
+This may not look like much, since there are still many unanswered questions, but it \emph{is} the coupled differential equation relating $c^\prime_n(t)$ to $c_n(t)$. Notice also that the first derivative of the coefficients depends \emph{only} on the operation of the perturbation on the wavefunction. That is, without \emph{some} sort of perturbation, the coefficients would never change. 
+
+\section*{Problem 1.3}
+We will now try to pin down the rate of change for a \emph{particular} coefficient $c_m$. As suggested, take the inner product of $\bra{\psi_m}$ (or left-multiply by $\bra{\psi_m}$) on both sides:
+
+$$
+\bra{\psi_m}i\hbar\sum_n c^\prime_n(t)\ket{\psi_n}e^{\nicefrac{-iE_nt}{\hbar}} =  \bra{\psi_m}\widehat{W}\sum_n c_n(t)\ket{\psi_n}e^{\nicefrac{-iE_nt}{\hbar}}
+$$
+
+On the left side, we can take the $\bra{\psi_m}$ into the sum and use the orthonormality of eigenstates to eliminate all terms but one. On the right side, we can take the terms into the sum leaving:
+
+$$
+i\hbar c^\prime_m(t)e^{\nicefrac{-iE_mt}{\hbar}} = \sum_n\bra{\psi_m}\widehat{W} c_n(t)\ket{\psi_n}e^{\nicefrac{-iE_nt}{\hbar}}
+$$
+
+This is as far as we can go until we consider the nature (and time dependence) of $\widehat{W}$
+
+\section*{Problem 1.4}
+Here, we simplify the sum by realizing that if the system starts in eigenstate $k$, then $c_{n\neq k}(t\!=\!-\frac{\tau}{2}) = 0$ and $c_{k}(t\!=\!-\frac{\tau}{2}) = 1$. The sum now includes only a single term which represents the coupling of states $m$ and $k$ by perturbation $\widehat{W}$. From now on, we will assume a ``two-state system'' and only consider transitions between $m$ and $k$:
+
+$$
+i\hbar c^\prime_m(t)e^{\nicefrac{-iE_mt}{\hbar}} = \bra{\psi_m}\widehat{W} \ket{\psi_k}e^{\nicefrac{-iE_kt}{\hbar}}
+$$
+
+As an aside, our mysterious perturbation $\widehat{W}$ is the polarization caused by exposure to an electromagnetic field $\epsilon$ (might be light waves). $\widehat{W} = \hat{\mathbf{\mu}}=-\mathbf{\mu}\cdot\epsilon(t)$ ($\epsilon$ may, and often does, oscillate in time). Now, this operator has odd symmetry in space, so the integral $\bra{\psi_m}\widehat{W} \ket{\psi_k}$ will go to $0$ if states $m$ and $k$ share the same symmetry, and therefore no transition will occur. Voil\`a, a selection rule reveals itself!
+
+Knowing the character of $\widehat{W}$ (namely, that it will commute with the phase oscillation terms) allows us to make a further important simplification. We can combine the two phase-oscillating terms by dividing the both sides by the $m$ state's oscillations. Some algebra cleans this up to give:
+
+$$
+i\hbar c^\prime_m(t)= \bra{\psi_m}\widehat{W} \ket{\psi_k}e^{\nicefrac{-i\left(E_k-E_m\right)t}{\hbar}}
+$$
+
+And finally, define $\Delta E = E_k-E_m$ to give:
+
+$$
+i\hbar c^\prime_m(t)= \bra{\psi_m}\widehat{W} \ket{\psi_k}e^{\nicefrac{-i\Delta Et}{\hbar}}
+$$
+
+Doesn't that look nice!
+
+\section*{Problem 1.5}
+
+
+Now we will follow the suggestion and convert the phase term into trigonometric functions by Euler's formula:
+
+$$
+i\hbar c^\prime_m(t)= \bra{\psi_m}\widehat{W} \ket{\psi_k}\left(\cos \frac{\Delta Et}{\hbar} - i\sin\frac{\Delta Et}{\hbar}\right)
+$$
+
+Now we can integrate both sides from $t=-\frac{\tau}{2}$ to $t=\frac{\tau}{2}$.
+
+$$
+\int\limits_{t=-\frac{\tau}{2}}^{t=\frac{\tau}{2}}i\hbar c^\prime_m(t) \mathrm{d}t= \int\limits_{t=-\frac{\tau}{2}}^{t=\frac{\tau}{2}}\bra{\psi_m}\widehat{W} \ket{\psi_k}\left(\cos \frac{\Delta Et}{\hbar} - i\sin\frac{\Delta Et}{\hbar}\right)\mathrm{d}t
+$$
+
+Now, the left term becomes $i\hbar c_m\left(\frac{\tau}{2}\right) - i\hbar c_m\left(-\frac{\tau}{2}\right)$, but since this coefficient started at $0$ it is really just $i\hbar c_m\left(\frac{\tau}{2}\right)$, or the coefficient in the excited state when the perturbation is switched off.
+
+The right side can be different depending on $\widehat{W}$. Let's consider two reasonable scenarios, a constant field and a field oscillating at frequency of $\omega$. We should also note that the time period $\tau$ represents the time a sample is exposed to the field, and is thus much longer than the phase oscillation period. This allows us to make ``rotating frame'' approximations, which state that integrals of oscillatory functions over many cycles tend toward $0$.
+
+For the constant field, the spatial integral $\bra{\psi_m}\widehat{W} \ket{\psi_k}$ will be a constant, and the integral only acts on the phase terms:
+
+$$
+i\hbar c_m\left(\frac{\tau}{2}\right) = \bra{\psi_m}\widehat{W} \ket{\psi_k} \int\limits_{t=-\frac{\tau}{2}}^{t=\frac{\tau}{2}}\left(\cos \frac{\Delta Et}{\hbar} - i\sin\frac{\Delta Et}{\hbar}\right)\mathrm{d}t
+$$
+
+Now in the non-trivial case where $E_k\neq E_m$, the integral will go to zero according to the rotating frame approximation and no transition will occur.
+
+For the oscillatory field, we will have $\widehat{W} = \mathbf{\mu}\cdot\epsilon_0\cos\omega t$. We can combine the time-dependencies to make the integral easier. I've also moved the $i\hbar$ onto the right side:
+
+$$
+c_m\left(\frac{\tau}{2}\right) = \frac{1}{i\hbar}\bra{\psi_m}-\mathbf{\mu}\cdot\epsilon_0 \ket{\psi_k} \int\limits_{t=-\frac{\tau}{2}}^{t=\frac{\tau}{2}}\cos{\omega t}\left(\cos \frac{\Delta Et}{\hbar} - i\sin\frac{\Delta Et}{\hbar}\right)\mathrm{d}t
+$$
+
+Trying to integrate the above using tables or tools like WolframAlpha didn't seem to get me anywhere near what I \emph{knew} the answer should be (see the results of this attempt preserved below). Luckily, we are not alone and the Internet has come to my rescue. Reading from an online document (\url{http://staff.ustc.edu.cn/\textasciitilde yuanzs/teaching/Fermi-Golden-Rule-No-II.pdf}) starting on page 7, we see the value in actually reverting the phase term to an exponential, converting the $\cos\omega t$ into exponentials to match.
+
+$$
+c_m\left(\frac{\tau}{2}\right) = \frac{1}{2i\hbar}\bra{\psi_m}-\mathbf{\mu}\cdot\epsilon_0 \ket{\psi_k} \int\limits_{t=-\frac{\tau}{2}}^{t=\frac{\tau}{2}}\left(e^{i\omega t}+e^{-i\omega t}\right)e^{\nicefrac{-i\Delta Et}{\hbar}}\mathrm{d}t
+$$
+
+Now the integral can be done to give:
+
+$$
+c_m\left(\frac{\tau}{2}\right) = \frac{1}{2i\hbar}\bra{\psi_m}-\mathbf{\mu}\cdot\epsilon_0 \ket{\psi_k} \left| \frac{ie^{-i\left(\omega-\nicefrac{\Delta E}{\hbar}\right)t}}{\omega - \nicefrac{\Delta E}{\hbar}} - \frac{ie^{-i\left(\omega+\nicefrac{\Delta E}{\hbar}\right)t}}{\omega + \nicefrac{\Delta E}{\hbar}}\right|_{t=-\frac{\tau}{2}}^{t=\frac{\tau}{2}}
+$$
+
+Now, first let's simplify by noting that if $\omega$ is very different from $\nicefrac{\Delta E}{\hbar}$ those denominators will both be large and the integral will go to $0$. In the case that $\omega\approx\nicefrac{\Delta E}{\hbar}$, then the second term will go to $0$ and only the first term will remain. We can also cancel out the $i$s:
+
+$$
+c_m\left(\frac{\tau}{2}\right) = \frac{1}{2\hbar}\bra{\psi_m}-\mathbf{\mu}\cdot\epsilon_0 \ket{\psi_k} \left| \frac{e^{-i\left(\omega-\nicefrac{\Delta E}{\hbar}\right)t}}{\omega - \nicefrac{\Delta E}{\hbar}}\right|_{t=-\frac{\tau}{2}}^{t=\frac{\tau}{2}}
+$$
+
+Now we will replace the exponent with trigonometric functions according to Euler's formula:
+$$
+c_m\left(\frac{\tau}{2}\right) = \frac{1}{2\hbar}\bra{\psi_m}-\mathbf{\mu}\cdot\epsilon_0 \ket{\psi_k} \left| \frac{\cos\left(\omega-\nicefrac{\Delta E}{\hbar}\right)t - i\sin\left(\omega-\nicefrac{\Delta E}{\hbar}\right)t}{\omega - \nicefrac{\Delta E}{\hbar}}\right|_{t=-\frac{\tau}{2}}^{t=\frac{\tau}{2}}
+$$
+
+Since $\cos$ is symmetric about $0$, and our limits are symmetric about $0$, the $\cos$ term here will also go to $0$. So much $0$! Since $\sin$ is antisymmetric about $0$, we can simplify it according to $\sin x - \sin -x = 2\sin x$, and finally evaluate at the integral limits
+
+$$
+c_m\left(\frac{\tau}{2}\right) = \frac{-1}{2\hbar}\bra{\psi_m}-\mathbf{\mu}\cdot\epsilon_0 \ket{\psi_k} \frac{2i\sin\left(\omega-\nicefrac{\Delta E}{\hbar}\right)\frac{\tau}{2}}{\omega - \nicefrac{\Delta E}{\hbar}}
+$$
+
+That is probably good enough for you to do some interpretation now.
+
+\section*{Problem 1.6}
+
+First, the transition probability depends on the magnitude squared of $c_m\left(\frac{\tau}{2}\right)$, which deals with that remaining $i$ and guarantees a positive value. Without actually squaring the coefficient, however, we can still make some inferences based on its complex value.
+
+We could also turn some attention to the integral $\bra{\psi_m}-\mathbf{\mu}\cdot\epsilon_0 \ket{\psi_k}$. This is a constant and encapsulates factors such as the electric field strength, the magnitude of the molecular transition dipole, and the alignment (or misalignment) of the electric field polarization with the transition dipole.
+
+The magnitude of $c_m\left(\frac{\tau}{2}\right)$ depends on two factors right now, the values of $\tau$ and $\omega - \nicefrac{\Delta E}{\hbar}$. First, lets consider the effect of $\omega - \nicefrac{\Delta E}{\hbar}$, which measures the degree that the excitation is off-resonance with the energy transition and is sometimes called the \emph{detuning}. Obviously, the fraction is maximized when the detuning approaches $0$, but we need to apply L'h\^opital's rule to show that it doesn't diverge to infinity. Ultimately, for a fixed value of $\tau$, the dependence on the detuning looks like the function $\frac{\sin x}{x}$. This function has a special name, a $sinc$ function, and it looks like a Gaussian function with wavy tails. This gives the surprising result that at \emph{certain} places (a minimum of the $sinc$ function), the transition probability can be enhanced with shifting the excitation wavelength in \emph{either} direction. The global max, however, is clearly at perfect resonance.
+
+The other factor, $\tau$ is a lot easier to understand. At a fixed detuning value, $c_m\left(\frac{\tau}{2}\right)$ oscillates in $\tau$ according to a $\sin$ function. These oscillations are called the \emph{Rabi cycle}, or \emph{optical nutation}, and give the surprising result that under constant illumination a quantum system will shift from one state to the other and back again. Actually, this is the behavior expected from two coupled oscillators. Here, the electric field and the electronic state are the two oscillators. As the system evolves into the excited state, it absorbs energy from the field to do so. As it relaxes back into the ground state, it returns that energy through stimulated emission. The rate of this cycle depends on the degree of detuning and the intensity of the light, though this derivation depended on the perturbative assumption that the excitation power was low. At high intensities we observe faster Rabi cycles, but we also must consider higher-order polarization effects when defining $\widehat{W}$.
+
+\section*{Integration results from WolframAlpha that didn't lead anywhere}
+
+$$
+c_m\left(\frac{\tau}{2}\right) = \frac{1}{i\hbar}\bra{\psi_m}-\mathbf{\mu}\cdot\epsilon_0 \ket{\psi_k} \left| \frac{e^{\frac{-i\Delta Et}{\hbar}}\left(\omega\sin\omega t - \frac{i\Delta E}{\hbar}\cos\omega t\right)}{\omega^2 - \left(\nicefrac{\Delta E}{\hbar}\right)^2}\right|_{t=-\frac{\tau}{2}}^{t=\frac{\tau}{2}}
+$$
+
+Well, now this isn't going where I know it it supposed to. I'll keep at it later today, but I figure you may want what I have so far, so I'll send this to you now. I know it \emph{should} end up with a sinc function ($\frac{\sin x}{x}$ where $x= \Delta E - \omega$, or the \emph{detuning} of the excitation wave). Good luck!
+
+\end{document}
