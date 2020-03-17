@@ -1,0 +1,107 @@
+\documentclass[12pt, openany, letterpaper]{memoir}
+\usepackage{GuideStyle}
+
+
+\begin{document}
+\title{SUU NMR User Guide}
+\author{Matthew Rowley}
+\date{\today}
+
+\begin{center}
+\pagestyle{empty}
+~
+
+\vspace{8em}
+{\LARGE SUU NMR User Guide}
+
+\vspace{1em}
+{\large For the Bruker Ascend 400 and TopSpin 3.2}
+
+\vspace{10em}
+{\large Matthew Rowley}
+
+\vspace{2em}
+\today
+\end{center}
+\frontmatter
+\tableofcontents*
+
+\mainmatter
+\addcontentsline{toc}{part}{Chapters}
+\chapter{Quick Use Guide}
+\label{CH:Quick}
+
+\section{Sample Preparation}
+In order to get good data, you must prepare an adequate sample. The NMR spectrometer is very sensitive, so you really only need a minimum amount of your sample to get good data. Place about 25 mg (or 75 mg if you plan on taking a \ch{^{13}C} spectrum) of the sample in a clean NMR tube.
+
+Even if your sample is a liquid, it must still be dissolved in a deuterated solvent as the solvents provide a locking signal for the spectrometer. Heavy water (\ch{D2O}) and Deuterated Chloroform (\ch{CDCl3}) are stored in small amber bottles on the counter. \ch{D2O} should be used for samples which dissolve in water (small alcohols, salts, etc.) while \ch{CDCl3} should be used for samples which dissolve in organic solvents (alkanes, ethers, esters, etc.).
+
+After selecting the proper solvent, add just enough to fill the NMR tube about 2 inches full. Much less than that will give a poor spectrum, and much more than that simply wastes expensive deuterated solvent. Cap the tube, and invert it several times to mix the solution. Capillary forces may be strong, so make sure that the solvent settles at the bottom of the tube when you are done. If solvent is stuck at the top, a gentle shake or tap on the counter can coax solvent down. 
+
+Wipe any fingerprints off of the bottom half of the NMR tube using a Kimwipe, and handle the tube only on the top half from now on. Now the tube is ready to be inserted into the blue NMR tube collar. If you cannot find the collar, it may be in the spectrometer, and must be ejected from the TopShim software. This is done by selecting \emph{Turn on sample lift air} from the \emph{Sample} pull-down in the \emph{Acquire} tab. Alternatively, you can type the command
+\code{ej\return}
+You will hear pressurized air and the collar, with a tube in place should appear at the loading port shortly. 
+
+\begin{wrapfigure}{r}{0.5\linewidth}
+\begin{center}
+\caption{A Properly Adjusted NMR Tube}
+\label{Fig:Tube}
+\end{center}
+\end{wrapfigure}
+
+The nmr tube needs to be positioned properly in the collar. First push it through the center hole, then place the collar in the transparent positioning jig. Push the NMR tube down until it reaches the stop, and it will be in the correct position (The top of the tube should protrude less than an inch above the collar). A properly adjusted NMR Tube is shown in Figure \ref{Fig:Tube}.
+
+Now is time to load the sample into the spectrometer. 
+\begin{mdframed}{\large Important!:} Dropping a sample into the NMR when the air pressure is switched off can damage the instrument. \end{mdframed}
+Be sure that the spectrometer is ready to receive the sample by selecting \emph{Turn on sample lift air} from the \emph{Sample} pull-down in the \emph{Acquire} tab. You should hear the air pressure escaping from the sample port, and the collar should bob lightly at the top when it is placed there. Now to inject the sample into the spectrometer, select \emph{Turn off sample lift air} from the \emph{Sample} pull-down in the \emph{Acquire} tab. Alternatively, you can type the command
+\code{ij\return}
+The sample should gently descend into the instrument, and is ready for data acquisition.
+\section{Data Acquisition and Analysis}
+
+\chapter{Creating a New User}
+\label{CH:New}
+
+For new faculty it might be advantageous to create a new user on the computer (This requires administrative access). While TopSpin files \emph{could} be stored anywhere (such as each within individual user's documents folder), it is convenient to keep them all within the TopSpin folder. Creating a folder for each faculty helps keep files organized.
+
+TopShim enforces a strict folder hierarchy, with a ``Data Directory'' at the top level. If a Data Directory is empty then TopSpin will not recognize it so a directory must first be populated with borrowed experimental data. To do this, copy data (with its two-deep parent folders) for a single procedure from any other user. This establishes the hierarchy  of:
+
+\begin{enumerate}
+\item Data Directory
+\item Name
+\item Experiment Number
+\item Procedure Number (this is actually the data file instead of a folder)
+\end{enumerate}
+
+Once the folder is prepared, you can add it in the TopSpin program by right-clicking in the browser and selecting \emph{Add New Data Dir\ldots}. Once added, you can now create new data sets from the borrowed one. There must be a better way to do this which avoids the current ``chicken-and-egg'' problem of needing a data set to create a data set\ldots but I don't know it.
+
+For a new user the window will not have show the familiar user interface. Namely, it is missing the large tabs and graphical icons on the top, and the informational graphics on the bottom. First, select \emph{Preferences\ldots} from the Options pull down at the top of the window. In the user preferences, within the \emph{Window settings} section, enable TopSpin 3 Flow User Interface to get the familiar user interface for a new user. Near the bottom, under the \emph{More preferences} section, click to change the \emph{Status Bar Preferences}. Include all options except the last two (\emph{BSMS status} and \emph{amplifier control}) to get the familiar graphical information bar at the bottom of the main window. 
+
+\chapter{Using Default Procedures}
+\label{CH:Default}
+
+\section{One-Dimensional Procedures}
+C13 takes just under an hour
+
+\section{Two-Dimensional Procedures}
+COSY takes about 58 minutes using the default parameters.
+
+HMBC takes about 25 minutes using the default parameters.
+
+HMQC takes about 1 hour 15 minutes using the default parameters.
+
+\chapter{Creating Custom Procedures}
+\label{CH:Custom}
+
+\section{A Spin-Echo Experiment}
+
+\chapter{NMR Theory Primer}
+\label{CH:Theory}
+
+\appendix
+\addcontentsline{toc}{part}{Appendices}
+\chapter{Command-Line Usage}
+\label{CH:Commands}
+
+\chapter{Default Procedures}
+\label{CH:Procedures}
+\end{document}
