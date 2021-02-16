@@ -1,0 +1,94 @@
+\documentclass[11pt, letterpaper]{memoir}
+\usepackage{HomeworkStyle}
+\geometry{margin=1in}
+
+
+
+\begin{document}
+
+	\begin{center}
+		{\large Fluorescent Lamp Problem}
+	\end{center}
+
+		
+\subsection*{The Original Problem}
+A fluorescent lamp generates light by passing an electrical current at $120~V$ through a tube containing mercury vapor. That vapor is usually at a low pressure ($0.003~atm$) and while the lamp operates the mercury is entirely in the \ch{Hg^{2+}} state. While they are on, these lamps run at a temperature of about $315~K$. Can we find the power of a fluorescent lamp based on these figures?
+\begin{itemize}
+	\item Find $\eta$ for the mercury ion vapor (assume that \ch{Hg^{2+}} has an ionic radius of $1.00$\AA)
+	
+	For a gas, $\eta=\frac{1}{3}v_{mean}\lambda M\mathcal{N}=\frac{1}{3}\sqrt{\frac{8RT}{\pi M}}\frac{k_BT}{\sigma p}M\frac{p}{k_BN_AT}=\frac{1}{3}\sqrt{\frac{8RT}{\pi M}}\frac{M}{\sigma N_A}$
+	
+	This equation is tedious enough already, but gets even worse when you consider keeping units complementary. $M$ must be in units of $\frac{kg}{mol}$, $p$ must be in units of $Pa$, and $R$ will be in $\frac{J}{mol~K}$ within the expression for $v_{mean}$, and either $\frac{L~atm}{mol~K}$ or $\frac{m^3~Pa}{mol~K}$ for $\mathcal{N}$. If you choose the former, just make sure that $\mathcal{N}$ is converted into units of $\frac{mol}{m^3}$. Alternatively, you can see above that $\lambda$ and $\mathcal{N}$ can provide some convenient cancellations if you express $\mathcal{N}$ in terms of Boltzmann's constant. Finally, we can find that:
+	
+	$\eta = \frac{1}{3}\sqrt{\frac{8\cdot8.314\frac{J}{mol~K}\cdot315K}{\pi\cdot0.20059\frac{kg}{mol}}}\frac{0.20059\frac{kg}{mol}}{\pi\cdot \left(2.00\times10^{-10}m\right)^2 \cdot 6.022\times10^{23} mol^{-1}}=1.61\times10^{-4}P$
+	
+	Now, the SI unit for viscosity is the ``Poise'' ($P$), which can be expressed many ways: \\$1P=1Pa\cdot s = 1\frac{N\cdot s}{m^2}=1\frac{kg}{m\cdot s}$. It is convenient for us to use the last one, so we will take the viscosity as: $\eta=1.61\times10^{-4}\frac{kg}{m\cdot s}$
+
+	\item Find the coefficient of friction for these ions. Assume $a\approx 1.00$\AA. Normally Stokes radii are different from the actual ionic radius due to the hydration sphere of the ion, but in a mercury gas vapor there is no solvent and no hydration sphere.
+	
+	$f=6\pi \eta a = 6\pi1.61\times10^{-4}\frac{kg}{m\cdot s}1.00\times10^{-10}m= 3.04\times10^{-13}\frac{kg}{s}$
+	\item Find the ion mobility 
+	
+	$u=\frac{ze}{f}=\frac{2\cdot 1.602\times10^{-19}C}{3.04\times10^{-13}\frac{kg}{s}}=1.05\times10^{-6}\frac{C\cdot s}{kg}$
+	
+	Again, here we change the units many different ways. $1C\cdot V=1J$, and $1J=1\frac{kg\cdot m^2}{s^2}$ so we can derive the relations: $1\frac{C\cdot s}{kg}=1\frac{J\cdot s}{V\cdot kg}=1\frac{m^2}{V\cdot s}$. Again, this last one is convenient so $u=1.05\times10^{-6}\frac{m^2}{V\cdot s}$
+	\item Find the ion drift speed assuming the lamp tube is $1~m$ long
+	
+	$s=uE=u\frac{\Delta V}{d}=1.05\times10^{-6}\frac{m^2}{V\cdot s}\frac{120V}{1m}= 1.26\times10^{-4}\frac{m}{s}$
+	\item Find the molar ion conductivity of the mercury ion vapor
+	
+	
+	$\lambda_M = z\cdot u\cdot F = 2 \cdot 1.05\times10^{-6}\frac{m^2}{V\cdot s}\cdot 96,485 \frac{C}{mol} = 0.203\frac{C\cdot m^2}{V\cdot s\cdot mol}$
+	
+	Here we use $1A\cdot s = 1C$ and $1A\Omega=1V$ to get: $1\frac{C\cdot m^2}{V\cdot s\cdot mol} = 1 \frac{A\cdot m^2}{V\cdot mol} = 1 \frac{m^2}{\Omega\cdot mol}$. \\We end up with $\lambda_M = 0.203\frac{m^2}{\Omega\cdot mol}$
+	\item Find the conductivity of the mercury vapor
+	
+	$\kappa = \lambda \cdot C = \lambda \cdot \frac{p}{R\cdot T}\cdot\frac{1000L}{1m^3} = 0.203\frac{m^2}{\Omega\cdot mol}\frac{0.003atm}{0.08206\frac{L~atm}{mol~K}315~K}\frac{1000L}{1m^3}=0.0236\frac{1}{\Omega\cdot m}$
+	
+	\item Find the conductance of the lamp, assuming it has a cross-sectional area of $5cm^2$
+	
+	$G=\kappa\frac{A}{l}=0.0236\frac{1}{\Omega\cdot m}\frac{5\times10^{-4}m^2}{1m}=1.18\times10^{-5}\Omega^{-1}$
+	
+	\item Find the resistance of the \ch{Hg^{2+}} vapor in the lamp, and the current running through it
+	
+	$R=\frac{1}{G}=\frac{1}{1.18\times10^{-5}\Omega^{-1}}= 84,700\Omega$ \hspace{5em} $I=\frac{\Delta V}{R}=\frac{120V}{84,700\Omega}= 0.00142A$
+	\item Find the power of the lamp
+	
+	$P=I\cdot \Delta V=0.00142A\cdot 120V=0.170W$
+	\item Congratulate yourself on reaching the answer!
+\end{itemize}
+\subsection*{Digging a Bit Deeper}
+Obviously, fluorescent lamps run at powers higher than $170 mW$ (About the power of a single bright LED). A typical tube fluorescent lamp will operate at about $32W$. We can explain the discrepancy because in these lamps there really is more than just \ch{Hg^{2+}} ions\ldots there are also the free electrons which were removed to create those ions, creating a plasma in the tube. The free electrons are much more mobile than the \ch{Hg^{2+}} ions and carry most of the current in these lamps. Both ions and free electrons are moving, in opposite directions, and at their own, different speeds. Everythin we calculated about the ions is still accurate, it is just negligible to the performance of the lamp. How much can we determine about the electrons, working backward from the known power of a lamp?
+
+\begin{itemize}
+	\item What is the total current and the electron current through the lamp?
+	
+	$I=\frac{P}{\Delta V} = \frac{32W}{120V}=0.267A$ \hspace{4em} $I_{e}=I_{total}-I_{Hg}=0.267A-0.001A = 0.266A$
+	
+	\item What is the resistance of the free electrons in the lamp?
+	
+	$R=\frac{\Delta V}{I} = \dfrac{120V}{0.266A}=451\Omega$
+	
+	\item Find the conductance of the electrons in the lamp
+	
+	$G=\frac{1}{R}=\frac{1}{451\Omega}=0.00222\Omega^{-1}$
+	
+	\item Find the conductivity of the electrons, assuming the lamp has a cross-sectional area of $5cm^2$
+	
+	$G=\kappa\frac{A}{l} \rightarrow \kappa=G\frac{l}{A}=0.00222\Omega^{-1}\frac{1m}{5\times10^{-4}m^2} = 4.43 \frac{1}{\Omega\cdot m}$
+	
+	\item Find the molar electron conductivity of the electrons
+	
+	$\lambda_M=\frac{\kappa}{C}=\frac{\kappa}{2\frac{p}{RT}\frac{1000L}{m^3}}=\frac{\kappa RTm^3}{2p1000L}=\frac{4.43 \frac{1}{\Omega\cdot m}0.08206\frac{L~atm}{mol~K}315Km^3}{2\cdot 0.003atm\cdot1000L}=19.1\frac{m^2}{\Omega~mol}$
+	
+	\item Find the electron mobility, and the ion drift speed
+	
+	$u = \frac{\lambda}{zF}=\frac{19.1\frac{m^2}{\Omega~mol}}{1\cdot 96485\frac{C}{mol}} = 1.98\times10^{-4}\frac{m^2}{V\cdot s}$
+	
+	$s=uE=u\frac{\Delta V}{d}=1.98\times10^{-4}\frac{m^2}{V\cdot s}\frac{120V}{1m}= 1.26\times10^{-4}\frac{m}{s}=0.0238\frac{m}{s}$
+	
+	
+\end{itemize}
+\noindent
+Things get a bit more vague from here on, since the electron radius and electron mass are so very small. Many models of electron behavior recognize that within a medium, electrons have an \emph{effective} mass and \emph{effective} size that depend on things like the dielectric constant of that medium. At any rate, for this problem, our journey ends here. :)
+\end{document}
