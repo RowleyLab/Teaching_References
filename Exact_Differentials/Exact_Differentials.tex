@@ -1,0 +1,50 @@
+\documentclass[12pt, openany, letterpaper]{memoir}
+\usepackage{NotesStyle}
+\pagestyle{empty}
+%\renewcommand\thesection{\thechapter\Alph{section}}
+%\renewcommand\thesubsection{\thesection.\Numeral{subsection}}
+\usepackage{xcolor}
+
+\begin{document}
+\begin{center}
+{\Large Exact Differentials and Natural Variables}
+\end{center}
+
+\noindent
+Our discussion of natural variables in exact differentials was perhaps a bit pre-mature, relying on the Wikipedia page for thermodynamic functions rather than the textbook.
+
+\noindent
+First, let's consider why it is appropriate to consider exact derivatives with respect to different pairs of variables in the first place, using a familiar equation:
+
+$$pV=nRT$$
+
+\noindent
+This is an equation with 4 variables: $p$, $V$, $n$, and $T$, but you need only 3 variables to define the system. The fourth variable (whichever you don't have) can be determined from the other three. So, I can take any derivative with respect to pressure, and just replace the pressure with $\dfrac{nRT}{V}$. I can then converted that derivative into one with respect to volume. This is just an application of the chain rule. $U$ is a function of $p$, which is itself a function of $V$, so we can express the derivative in terms of either variable.
+
+\noindent
+Entropy and temperature have a similar relationship based on the definition of entropy: 
+
+$$S=\int_{0K}^{T^\prime}\dfrac{\dbar q_{rev}}{T}$$
+
+\noindent
+Using this relationship, we can always replace the Entropy with $T$ and vice-versa. The replacement may be messy, but it is possible.
+
+\noindent
+So, we can give the exact derivative of $U$ in terms of $V$ and $T$:
+
+$$\mathrm{d}U = \left(\dfrac{\partial U}{\partial V}\right)_{\!\!T}\mathrm{d}V + \left(\dfrac{\partial U}{\partial T}\right)_{\!\!V}\mathrm{d}T$$
+ 
+\noindent
+Or, we could give it in terms of $V$ and $S$ instead:
+
+$$\mathrm{d}U = \left(\dfrac{\partial U}{\partial V}\right)_{\!\!S}\mathrm{d}V + \left(\dfrac{\partial U}{\partial S}\right)_{\!\!V}\mathrm{d}S$$
+
+\noindent
+Why would we want to do this? Because the partial derivatives in this form are themselves equal to the state variables $-p$ and $T$
+
+$$\left(\dfrac{\partial U}{\partial V}\right)_{\!\!S} = -p \hspace{2em}\mathrm{and}\hspace{2em} \left(\dfrac{\partial U}{\partial S}\right)_{\!\!V}=T$$
+
+\noindent
+For the other main thermodynamic potentials ($H$, $G$, and $A$), similar pairs of variables will have this neat property - that the partial derivatives with respect to those pairs of variables are equal to other state variables!
+
+\end{document}
