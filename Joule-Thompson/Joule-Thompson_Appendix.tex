@@ -1,0 +1,144 @@
+\documentclass[12pt,letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{nicefrac}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\title{Supplementary Information for the Joule-Thompson Coefficient Lab}
+\author{Matthew Rowley}
+\begin{document}
+	\maketitle
+	\section{Relating the Joule-Thompson Coefficient to the Van der Waals Constants}
+	The definition for the Joule-Thompson Coefficient is given in equation \ref{JT_Definition} below
+	\begin{equation}\label{JT_Definition}
+		\mu\equiv-\frac{\left(\frac{\partial H}{\partial P}\right)_T}{\left(\frac{\partial H}{\partial T}\right)_P}
+	\end{equation}
+
+	In order to relate the Joule-Thompson Coefficient to the Van der Waals Constants, we must first take a closer look at enthalpy ($H$). Enthalpy is defined as $H=U+PV$, and is a function of multiple variables. Therefore, we can express its exact differential in multiple ways. We may not have completely covered this yet in lecture, but essentially H is a 2-dimensional function and we can take the partial derivatives with respect to different pairs of variables. For thermodynamic potentials, one pair of variables is called the ``Natural Variables'' because their partial derivatives \emph{are themselves} state variables. For enthalpy, the natural variables are $S$ and $P$, and the exact differential is given below
+	\begin{equation}
+		\mathrm{d}H=\left(\frac{\partial H}{\partial S}\right)_P\mathrm{d}S + \left(\frac{\partial H}{\partial P}\right)_S\mathrm{d}P
+	\end{equation}
+
+	Since $\left(\frac{\partial H}{\partial S}\right)_P=T$ and $\left(\frac{\partial H}{\partial P}\right)_S=V$, the expression simplifies to the expression below. This is the neat result of using the \emph{natural variables}:
+	\begin{equation}\label{natural}
+		\mathrm{d}H=T\mathrm{d}S + V\mathrm{d}P
+	\end{equation}
+
+	However, for $U$ and $H$ it is useful to take derivatives with respect to temperature as well, even though it is not a natural variable for those potentials. For enthalpy the exact derivative is given below:
+	\begin{equation}
+		\mathrm{d}H=\left(\frac{\partial H}{\partial T}\right)_P\mathrm{d}T + \left(\frac{\partial H}{\partial P}\right)_T\mathrm{d}P
+	\end{equation}
+
+	And $\left(\frac{\partial H}{\partial T}\right)_P$ is the constant-pressure heat capacity $c_P$. We can't simplify the other part yet, but so far this gives us:
+	\begin{equation}\label{unnatural}
+		\mathrm{d}H=c_P\mathrm{d}T + \left(\frac{\partial H}{\partial P}\right)_T\mathrm{d}P
+	\end{equation}
+
+	Now we can return to equation \ref{natural}, and differential with respect to P at constant temperature. In practice, this means that we change all our $\mathrm{d}$s into $\partial$s, put $\partial P$ in the denominator on both sides, and now hold T constant. The $\partial P$ in the final term will cancel. The result is:
+	
+	\begin{equation}
+		\left(\frac{\partial H}{\partial P}\right)_T = T \left(\frac{\partial S}{\partial P}\right)_T + V
+	\end{equation}
+
+	Now we can plug this into the other exact differential equation for H, equation \ref{unnatural} to get:
+	\begin{equation}
+		\mathrm{d}H=c_P\mathrm{d}T + \left[T \left(\frac{\partial S}{\partial P}\right)_T + V\right]_T\mathrm{d}P
+	\end{equation}
+
+	Here we have a partial derivative of one state variable with respect to another state variable. This is an ideal time to consider using a Maxwell relation, which we also haven't covered. Wikipedia has two pages that are useful references for thermodynamic potentials and Maxwells relations.
+	\begin{itemize}
+		\item \href{https://en.wikipedia.org/wiki/Thermodynamic_potential}{https://en.wikipedia.org/wiki/Thermodynamic\_potential}
+		\item \href{https://en.wikipedia.org/wiki/Maxwell_relations}{https://en.wikipedia.org/wiki/Maxwell\_relations}
+	\end{itemize}
+
+	In this instance, we specifically need the Maxwell relation:\\ $\left(\frac{\partial S}{\partial P}\right)_T = - \left(\frac{\partial V}{\partial T}\right)_P$. Using this relation gives us an expression that no longer references entropy, and this is useful because our gas equations of state are not explicitly functions of entropy either:
+	\begin{equation}
+		\mathrm{d}H=c_P\mathrm{d}T + \left[V-T \left(\frac{\partial V}{\partial T}\right)_P\right]_T\mathrm{d}P
+	\end{equation}
+
+	And remember that $\left[V-T \left(\frac{\partial V}{\partial T}\right)_P\right]_T=\left(\frac{\partial H}{\partial P}\right)_T$, so we can revisit our original definition of the Joule-Thompson coefficient in equation \ref{JT_Definition}:
+	\begin{equation}\label{JT_Rearranged}
+		\mu\equiv-\frac{\left(\frac{\partial H}{\partial P}\right)_T}{\left(\frac{\partial H}{\partial T}\right)_P} = -\frac{\left[V-T \left(\frac{\partial V}{\partial T}\right)_P\right]_T}{c_P} = \frac{\left[T \left(\frac{\partial V}{\partial T}\right)_P-V\right]_T}{c_P}
+	\end{equation}
+	
+	Now we can find the partial derivative using our favorite equation of state, in this case the Van der Waals equation. To solve that partial derivative we need to re-write the molar Van der Waals equation to give volume. This will take several steps:
+	
+	\begin{equation}
+		P = \dfrac{RT}{V-b}-\dfrac{a}{V^2} \longrightarrow \left(P + \dfrac{a}{V^2}\right)\left(V-b\right) = RT 	
+	\end{equation}
+
+	Foiling out the left side gives:
+	
+	\begin{equation}
+		PV + \dfrac{a}{V} - Pb - \dfrac{ab}{V^2} = RT
+	\end{equation}
+	
+	The final term can be broken up into $\frac{a}{V}\frac{b}{V}$ and we know that $b<<V$ so this whole term goes to $0$, giving:
+	
+	\begin{equation}
+		PV + \dfrac{a}{V} - Pb = RT
+	\end{equation}
+	
+	Solve this for the first term's $V$. We'll deal with the other $V$ in a moment.
+	
+	\begin{equation}
+		V = \dfrac{RT}{P} - \dfrac{a}{PV} + b
+	\end{equation}
+
+	Now we can make an interesting substitution. $PV\approx RT$. Of course, the whole point of the VdW equation is to capture the small deviation away from this equality, but that deviation is captured by the $a$ and $b$ terms and the approximation is still pretty good if those terms remain in the expression. So, here we can replace $PV$ with $RT$. We will intentionally avoid making this same substitution later on, so let's just say to not be too zealous in using this approximation to simplify. Use it only if you absolutely must.
+	
+	\begin{equation}\label{VdW_Volume}
+		V = \dfrac{RT}{P} - \dfrac{a}{RT} + b
+	\end{equation}
+	
+	Now we can take the derivative of this volume with respect to $T$ at constant $P$
+	
+	\begin{equation}
+		\left(\frac{\partial V}{\partial T}\right)_P = \dfrac{R}{P} + \dfrac{a}{RT^2}
+	\end{equation}
+	
+	And plug this into equation \ref{JT_Rearranged}
+	
+	\begin{equation}\label{JT_Rearranged}
+		\mu = \dfrac{\left[T \left(\dfrac{R}{P} + \dfrac{a}{RT^2}\right)-V\right]_T}{c_P}
+	\end{equation}
+
+	Distribute the $T$ to get:
+	
+	\begin{equation}
+		\mu = \dfrac{\left[\dfrac{RT}{P} + \dfrac{a}{RT}-V\right]_T}{c_P}
+	\end{equation}
+
+	Now we can rearrange equation \ref{VdW_Volume} a bit to get:
+	
+	\begin{equation}
+		\dfrac{RT}{P} = V + \dfrac{a}{RT} - b
+	\end{equation}
+	
+	Use this equality in the equation above to get:
+	
+	\begin{equation}
+		\mu = \dfrac{\left[ V + \dfrac{a}{RT} - b + \dfrac{a}{RT}-V\right]_T}{c_P} = \dfrac{\left[ \dfrac{2a}{RT} - b\right]_T}{c_P}
+	\end{equation}
+
+	Remove the constant temperature condition because we are no longer looking at any processes of change or derivatives and we finally arrive at the equation:
+	
+	\begin{equation}
+		\mu=\dfrac{\dfrac{2a}{RT}-b}{C_P}
+	\end{equation}
+
+	For this equation to work, we must use proper units. values of $a$ and $b$ are often given with units of $atm$ or $bar$ for pressure, and $L$ or $cm^3$ for volume. Neither of these will cancel well with the $J$ in $C_P$ and $R$. If we convert all pressures to $Pa$ and all volumes to $m^3$ then units will \emph{always} work out. That's the point of SI units! In the end, you'll get the Joule-Thompson coefficient in units of $\nicefrac{K}{Pa}$, and can then convert it into $bar$ or $atm$ if desired.
+	
+	\section{Why We Use the Slope of a $\Delta T$ vs $\Delta P$ Graph Rather Than the Limit of $\frac{\Delta T}{\Delta P}$ as $\Delta P \rightarrow 0$}
+	
+	The next issue to address is why we use the slope of the graph $\Delta T$ vs $\Delta P$ instead of the limit of $\frac{\Delta T}{\Delta P}$ as $\Delta P \rightarrow 0$. To begin with, let's consider what we expect to see in that limit. As $\Delta P \rightarrow 0$, then $\Delta T$ should approach $0$ as well. In fact, when $P=0$ exactly then $\frac{\Delta T}{\Delta P}$ is undefined, hence the need for a limit. At any rate, we know that $\Delta T \rightarrow 0$ as $\Delta P \rightarrow 0$, so the relationship $\frac{\Delta T}{\Delta P}$ should be \emph{proportional}, not just linear.
+	
+	What we actually observe in the lab is very different. The graph of $\Delta T$ vs $\Delta P$ is linear, but with a significant $b$ parameter, or y-intercept. This y-intercept should not be there, and is a result of experimental error. Specifically, it comes from a calibration issue with the pressure and temperature probes. When taking a differential measurement (the difference of two probe outputs), any small offset in the two instrument responses will lead to only small errors if the differential measurement is large. As the differential measurement approaches $0$, however, the significance of any small offset will explode into huge errors in the differential measurement. Consequently, when making differential measurements special care should be taken to ensure that both probes are constructed, configured, and calibrated in exactly the same way.
+	
+	In this lab, we have no reliable way to calibrate the pressure sensors, but I actually suspect that they are not the real problem. Looking at student data, it has become clear that the temperature probes never truly read the same temperature, even when the pressure difference is near $0$. We could perhaps improve our measurements by going through a calibration every week, and by waiting longer for the temperature to equilibrate. However, for this type of temperature probe (type K thermocouple) there will always be large error at small differential measurements.
+	
+	Fortunately, the offsets in the temperature probe response are pretty constant across our small temperature range. This means that we can take the slope of the $\Delta T$ vs $\Delta P$ graph and assume it is the same as the proportionality constant for $\frac{\Delta T}{\Delta P}$ itself.
+	
+\end{document}
